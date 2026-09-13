@@ -1,0 +1,425 @@
+{
+  "entities": {
+    "users": {
+      "title": "Users",
+      "description": "User profiles registered on horsez equine platform",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Auth UID" },
+        "email": { "type": "string", "description": "User email address" },
+        "fullName": { "type": "string", "description": "Full name of the member" },
+        "phone": { "type": "string", "description": "Contact phone number" },
+        "equineRole": { "type": "string", "description": "Role in equestrian community" },
+        "address": { "type": "string", "description": "Street address" },
+        "city": { "type": "string", "description": "City" },
+        "state": { "type": "string", "description": "State / Province code" },
+        "zipCode": { "type": "string", "description": "ZIP / Postal Code" },
+        "location": { "type": "string", "description": "Full location string" },
+        "primaryDiscipline": { "type": "string", "description": "Riding discipline" },
+        "numberOfHorses": { "type": "number", "description": "Number of horses owned/managed" },
+        "createdAt": { "type": "string", "description": "Registration date" }
+      },
+      "required": ["uid", "email", "fullName"]
+    },
+    "userHorses": {
+      "title": "User Horses",
+      "description": "Horses belonging to registered members in database",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner UID" },
+        "name": { "type": "string", "description": "Horse name" },
+        "breed": { "type": "string", "description": "Breed" },
+        "age": { "type": "number", "description": "Age in years" },
+        "discipline": { "type": "string", "description": "Primary riding discipline" },
+        "stabledAt": { "type": "string", "description": "Barn location" }
+      },
+      "required": ["userId", "name"]
+    },
+    "favorites": {
+      "title": "Saved Favorites",
+      "description": "User saved vets, trainers, listings, and services",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Item ID" },
+        "category": { "type": "string", "description": "Category name" },
+        "title": { "type": "string", "description": "Item title" },
+        "subtitle": { "type": "string", "description": "Item subtitle" },
+        "price": { "type": "string", "description": "Price tag if available" },
+        "rating": { "type": "number", "description": "Rating out of 5" },
+        "image": { "type": "string", "description": "Image URL" },
+        "location": { "type": "string", "description": "Location string" },
+        "addedAt": { "type": "string", "description": "ISO timestamp" }
+      },
+      "required": ["id", "category", "title"]
+    },
+    "farriers": {
+      "title": "Farriers Directory",
+      "description": "Certified and independent farriers registered on the platform",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Farrier ID" },
+        "name": { "type": "string", "description": "Farrier full name or business name" },
+        "rating": { "type": "number", "description": "Star rating" },
+        "reviewsCount": { "type": "number", "description": "Count of reviews" },
+        "location": { "type": "string", "description": "City, State, or service area" },
+        "address": { "type": "string", "description": "Full street address" },
+        "street": { "type": "string", "description": "Street line" },
+        "city": { "type": "string", "description": "City" },
+        "state": { "type": "string", "description": "State code" },
+        "zipCode": { "type": "string", "description": "ZIP code" },
+        "phone": { "type": "string", "description": "Phone number" },
+        "verified": { "type": "boolean", "description": "Verification status" },
+        "mcNumber": { "type": "string", "description": "Farrier certification / MC number" },
+        "avatar": { "type": "string", "description": "Farrier profile image / picture URL" },
+        "specialties": { "type": "array", "description": "Hoofcare specialties" },
+        "instantResponse": { "type": "boolean", "description": "Emergency service availability" },
+        "priceEstimate": { "type": "string", "description": "Service pricing details" },
+        "lat": { "type": "number", "description": "Latitude" },
+        "lng": { "type": "number", "description": "Longitude" },
+        "bio": { "type": "string", "description": "Bio or experience notes" },
+        "publishedAsListing": { "type": "boolean", "description": "Whether published as a community marketplace/service listing" },
+        "listingStatus": { "type": "string", "description": "Status of listing (active, pending, draft)" },
+        "sellerId": { "type": "string", "description": "UID of the publishing member" },
+        "authorEmail": { "type": "string", "description": "Email of the publishing member" },
+        "createdAt": { "type": "string", "description": "Date added" }
+      },
+      "required": ["name", "location", "avatar"]
+    },
+    "marketplaceListings": {
+      "title": "Marketplace Listings",
+      "description": "Trailers, saddles, tack, equines, and gear published on horsez marketplace",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Listing ID" },
+        "title": { "type": "string", "description": "Listing title" },
+        "category": { "type": "string", "description": "Category (trailers, tack, horses, gear)" },
+        "price": { "type": "number", "description": "Price in USD" },
+        "location": { "type": "string", "description": "City, State or area" },
+        "address": { "type": "string", "description": "Street or specific address" },
+        "images": { "type": "array", "description": "Array of listing photo URLs / base64 images" },
+        "sellerName": { "type": "string", "description": "Seller full name" },
+        "sellerAvatar": { "type": "string", "description": "Seller avatar URL" },
+        "sellerRating": { "type": "number", "description": "Seller rating score" },
+        "sellerVerified": { "type": "boolean", "description": "Verification status" },
+        "sellerPhone": { "type": "string", "description": "Seller phone contact" },
+        "sellerEmail": { "type": "string", "description": "Seller email contact" },
+        "condition": { "type": "string", "description": "Item condition" },
+        "breed": { "type": "string", "description": "Equine breed if applicable" },
+        "discipline": { "type": "string", "description": "Discipline if applicable" },
+        "description": { "type": "string", "description": "Full item description" },
+        "createdAt": { "type": "string", "description": "Publication timestamp" }
+      },
+      "required": ["title", "price", "category", "images", "description"]
+    },
+    "trainers": {
+      "title": "Equine Trainers & Instructors",
+      "description": "Certified trainers, instructors, and exercise riders published on horsez",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Trainer ID" },
+        "name": { "type": "string", "description": "Trainer name" },
+        "avatar": { "type": "string", "description": "Avatar photo URL" },
+        "heroPhoto": { "type": "string", "description": "Hero / cover photo URL" },
+        "images": { "type": "array", "description": "Photo gallery URLs / base64 images" },
+        "rating": { "type": "number", "description": "Star rating" },
+        "hourlyRate": { "type": "number", "description": "Hourly rate in USD" },
+        "disciplines": { "type": "array", "description": "Disciplines taught" },
+        "certifications": { "type": "array", "description": "Certifications & licensing" },
+        "services": { "type": "array", "description": "Services offered" },
+        "bio": { "type": "string", "description": "Bio and training philosophy" },
+        "location": { "type": "string", "description": "City, State or area" },
+        "address": { "type": "string", "description": "Barn or stable address" },
+        "phone": { "type": "string", "description": "Contact phone" },
+        "email": { "type": "string", "description": "Contact email" },
+        "mcNumber": { "type": "string", "description": "MC# license verification" },
+        "waiverVerified": { "type": "boolean", "description": "Digital liability waiver verified" },
+        "distanceMiles": { "type": "number", "description": "Distance in miles" },
+        "createdAt": { "type": "string", "description": "Registration date" }
+      },
+      "required": ["name", "hourlyRate", "location", "disciplines", "heroPhoto"]
+    },
+    "veterinarians": {
+      "title": "Veterinarian Clinics & Ambulatory Units",
+      "description": "Licensed equine veterinarians and emergency hospitals published on horsez",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Clinic ID" },
+        "name": { "type": "string", "description": "Hospital or clinic name" },
+        "rating": { "type": "number", "description": "Rating score" },
+        "reviewsCount": { "type": "number", "description": "Review count" },
+        "address": { "type": "string", "description": "Street address" },
+        "city": { "type": "string", "description": "City" },
+        "state": { "type": "string", "description": "State code" },
+        "zipCode": { "type": "string", "description": "ZIP code" },
+        "phone": { "type": "string", "description": "Clinic phone" },
+        "emergencyPhone": { "type": "string", "description": "24/7 Emergency dispatch line" },
+        "isOpen": { "type": "boolean", "description": "Currently open" },
+        "is247": { "type": "boolean", "description": "24/7 emergency facility" },
+        "ambulatory": { "type": "boolean", "description": "Mobile ambulatory truck available" },
+        "services": { "type": "array", "description": "Veterinary clinical services" },
+        "avatar": { "type": "string", "description": "Logo or clinic photo URL" },
+        "lat": { "type": "number", "description": "Latitude" },
+        "lng": { "type": "number", "description": "Longitude" },
+        "createdAt": { "type": "string", "description": "Creation timestamp" }
+      },
+      "required": ["name", "address", "phone"]
+    },
+    "transportationListings": {
+      "title": "Transportation & Commercial Hauler Listings",
+      "description": "Certified equine haulers, rigs, and scheduled route carriers",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Hauler listing ID" },
+        "companyName": { "type": "string", "description": "Hauling company or carrier name" },
+        "driverName": { "type": "string", "description": "Lead driver name" },
+        "phone": { "type": "string", "description": "Contact phone" },
+        "email": { "type": "string", "description": "Contact email" },
+        "mcNumber": { "type": "string", "description": "USDOT / MC Number" },
+        "rigType": { "type": "string", "description": "Trailer type & capacity" },
+        "baseLocation": { "type": "string", "description": "Home base city & state" },
+        "serviceArea": { "type": "string", "description": "Regions served (e.g. Nationwide, West Coast)" },
+        "ratePerMile": { "type": "number", "description": "Standard rate per loaded mile" },
+        "baseHookupFee": { "type": "number", "description": "Standard hookup fee" },
+        "features": { "type": "array", "description": "Air ride, CCTV cameras, box stalls" },
+        "avatar": { "type": "string", "description": "Rig photo or company avatar" },
+        "verified": { "type": "boolean", "description": "Commercial license verified" },
+        "createdAt": { "type": "string", "description": "Created date" }
+      },
+      "required": ["companyName", "phone", "rigType", "baseLocation"]
+    },
+    "haulJobs": {
+      "title": "Published Haul Requests & Trips",
+      "description": "User requested equine transport trips published to the hauler dispatch network",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Haul trip ID" },
+        "pickup": { "type": "string", "description": "Pickup summary" },
+        "dropoff": { "type": "string", "description": "Dropoff summary" },
+        "pickupDate": { "type": "string", "description": "Target pickup date/time" },
+        "horseCount": { "type": "number", "description": "Number of horses to transport" },
+        "horseNames": { "type": "string", "description": "Horses names and breed details" },
+        "rigType": { "type": "string", "description": "Preferred trailer type" },
+        "price": { "type": "number", "description": "Estimated or agreed price in USD" },
+        "distanceMiles": { "type": "number", "description": "Trip distance in miles" },
+        "status": { "type": "string", "description": "Status (published, assigned, in_transit, completed)" },
+        "contactPhone": { "type": "string", "description": "Shipper contact phone" },
+        "createdAt": { "type": "string", "description": "Booking timestamp" }
+      },
+      "required": ["pickup", "dropoff", "price", "status"]
+    },
+    "feedSupplies": {
+      "title": "Feed & Farm Supply Listings",
+      "description": "Hay growers, feed mills, and tack stores listing bulk and retail equine nutrition",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Product / Feed listing ID" },
+        "title": { "type": "string", "description": "Product name (e.g. Premium 3-Tie Alfalfa)" },
+        "category": { "type": "string", "description": "Category (hay, grain, supplements, tack)" },
+        "price": { "type": "number", "description": "Price per unit / bale / bag" },
+        "unit": { "type": "string", "description": "Unit (bale, 50lb bag, ton)" },
+        "weight": { "type": "string", "description": "Weight specification" },
+        "description": { "type": "string", "description": "Product description & forage analysis" },
+        "vendorName": { "type": "string", "description": "Supplier / Ranch name" },
+        "vendorLocation": { "type": "string", "description": "City, State or ranch address" },
+        "image": { "type": "string", "description": "Product image URL" },
+        "inStock": { "type": "boolean", "description": "Availability status" },
+        "deliveryAvailable": { "type": "boolean", "description": "Bulk delivery truck service available" },
+        "createdAt": { "type": "string", "description": "Published date" }
+      },
+      "required": ["title", "category", "price", "vendorName"]
+    },
+    "feedOrders": {
+      "title": "Feed & Supply Barn Orders",
+      "description": "Customer feed orders, scheduled barn deliveries, and payment records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Order ID" },
+        "orderNumber": { "type": "string", "description": "Human readable order number" },
+        "userId": { "type": "string", "description": "Customer user UID" },
+        "customerName": { "type": "string", "description": "Customer full name" },
+        "customerEmail": { "type": "string", "description": "Customer email" },
+        "customerPhone": { "type": "string", "description": "Customer phone" },
+        "barnName": { "type": "string", "description": "Barn or ranch name" },
+        "deliveryAddress": { "type": "string", "description": "Barn delivery street address" },
+        "deliveryCity": { "type": "string", "description": "City" },
+        "deliveryState": { "type": "string", "description": "State" },
+        "deliveryZip": { "type": "string", "description": "ZIP code" },
+        "gateCode": { "type": "string", "description": "Ranch gate access code" },
+        "dropLocation": { "type": "string", "description": "Drop off location method" },
+        "dropLocationLabel": { "type": "string", "description": "Drop off location readable label" },
+        "deliveryDate": { "type": "string", "description": "Scheduled delivery date" },
+        "deliveryTimeSlot": { "type": "string", "description": "Delivery window" },
+        "items": { "type": "array", "description": "Itemized feed order products" },
+        "subtotal": { "type": "number", "description": "Order subtotal" },
+        "bulkDiscount": { "type": "number", "description": "Bulk quantity discount" },
+        "subscriptionDiscount": { "type": "number", "description": "Auto-ship recurring discount" },
+        "deliveryFee": { "type": "number", "description": "Delivery fee" },
+        "unloadFee": { "type": "number", "description": "Forklift / stacking unload fee" },
+        "promoDiscount": { "type": "number", "description": "Promo coupon discount" },
+        "promoCode": { "type": "string", "description": "Applied promo code" },
+        "tax": { "type": "number", "description": "Sales tax" },
+        "total": { "type": "number", "description": "Final paid total in USD" },
+        "paymentMethod": { "type": "string", "description": "Payment method" },
+        "paymentStatus": { "type": "string", "description": "Payment status" },
+        "orderStatus": { "type": "string", "description": "Order processing status" },
+        "trackingNumber": { "type": "string", "description": "Logistics dispatch tracking number" },
+        "specialInstructions": { "type": "string", "description": "Driver delivery notes" },
+        "createdAt": { "type": "string", "description": "Order placement timestamp" }
+      },
+      "required": ["orderNumber", "customerName", "deliveryAddress", "total", "paymentMethod", "items"]
+    },
+    "lodgingListings": {
+      "title": "Bed & Bale Lodging Listings",
+      "description": "Horse motels, equestrian layover barns, covered stalls, and RV hookups",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Property listing ID" },
+        "title": { "type": "string", "description": "Property / Ranch name" },
+        "location": { "type": "string", "description": "City, State" },
+        "address": { "type": "string", "description": "Full street address" },
+        "pricePerNight": { "type": "number", "description": "Nightly rate in USD" },
+        "rating": { "type": "number", "description": "Guest rating" },
+        "stallCount": { "type": "number", "description": "Total stalls available" },
+        "rvHookups": { "type": "boolean", "description": "30A / 50A RV electric & water" },
+        "turnoutPaddocks": { "type": "boolean", "description": "Turnout paddocks available" },
+        "indoorArena": { "type": "boolean", "description": "Covered / indoor riding arena" },
+        "maxRigLength": { "type": "string", "description": "Max trailer / rig length accommodated" },
+        "hostName": { "type": "string", "description": "Host / barn manager name" },
+        "phone": { "type": "string", "description": "Host phone" },
+        "image": { "type": "string", "description": "Property photo URL" },
+        "lat": { "type": "number", "description": "Latitude" },
+        "lng": { "type": "number", "description": "Longitude" },
+        "createdAt": { "type": "string", "description": "Created timestamp" }
+      },
+      "required": ["title", "location", "pricePerNight", "stallCount"]
+    },
+    "marketplaceInquiries": {
+      "title": "Marketplace Inquiries & Offers",
+      "description": "Buyer inquiries, direct messages, and purchase offers on marketplace listings",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Inquiry ID" },
+        "listingId": { "type": "string", "description": "Marketplace listing ID" },
+        "listingTitle": { "type": "string", "description": "Listing title" },
+        "listingCategory": { "type": "string", "description": "Listing category" },
+        "listingPrice": { "type": "number", "description": "Asking price" },
+        "sellerName": { "type": "string", "description": "Seller name" },
+        "sellerEmail": { "type": "string", "description": "Seller email" },
+        "buyerId": { "type": "string", "description": "Buyer user UID" },
+        "buyerName": { "type": "string", "description": "Buyer full name" },
+        "buyerEmail": { "type": "string", "description": "Buyer email" },
+        "buyerPhone": { "type": "string", "description": "Buyer phone" },
+        "offerAmount": { "type": "number", "description": "Offer amount in USD" },
+        "message": { "type": "string", "description": "Message text" },
+        "status": { "type": "string", "description": "Status (pending, accepted, declined, replied)" },
+        "createdAt": { "type": "string", "description": "Timestamp" }
+      },
+      "required": ["listingId", "listingTitle", "buyerName", "message"]
+    },
+    "marketplaceEscrow": {
+      "title": "Marketplace Escrow Transactions",
+      "description": "Secured escrow transactions and PPE inspection deposit agreements",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Escrow transaction ID" },
+        "escrowNumber": { "type": "string", "description": "Human readable escrow reference" },
+        "listingId": { "type": "string", "description": "Marketplace listing ID" },
+        "listingTitle": { "type": "string", "description": "Listing title" },
+        "listingPrice": { "type": "number", "description": "Full purchase price" },
+        "depositAmount": { "type": "number", "description": "Deposit amount held in escrow" },
+        "buyerId": { "type": "string", "description": "Buyer user UID" },
+        "buyerName": { "type": "string", "description": "Buyer full name" },
+        "buyerEmail": { "type": "string", "description": "Buyer email" },
+        "buyerPhone": { "type": "string", "description": "Buyer phone" },
+        "sellerName": { "type": "string", "description": "Seller name" },
+        "ppeInspectionDays": { "type": "number", "description": "Pre-purchase inspection window in days" },
+        "escrowStatus": { "type": "string", "description": "Status (deposit_held, ppe_pending, released, refunded)" },
+        "termsAgreed": { "type": "boolean", "description": "Whether terms were acknowledged" },
+        "createdAt": { "type": "string", "description": "Transaction date" }
+      },
+      "required": ["escrowNumber", "listingId", "listingTitle", "depositAmount", "buyerName"]
+    },
+    "feedBulkQuotes": {
+      "title": "Bulk Feed & Hay Haul Quotes",
+      "description": "Commercial tractor-trailer hay requests and bulk shipment quotes",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Quote ID" },
+        "userId": { "type": "string", "description": "Shipper UID" },
+        "barnName": { "type": "string", "description": "Barn / Facility name" },
+        "contactName": { "type": "string", "description": "Contact person name" },
+        "contactEmail": { "type": "string", "description": "Contact email" },
+        "contactPhone": { "type": "string", "description": "Contact phone" },
+        "tons": { "type": "number", "description": "Tonnage requested" },
+        "variety": { "type": "string", "description": "Forage variety requested" },
+        "location": { "type": "string", "description": "Delivery city & state" },
+        "notes": { "type": "string", "description": "Special equipment notes" },
+        "status": { "type": "string", "description": "Status (submitted, quoting, dispatched)" },
+        "createdAt": { "type": "string", "description": "Submission date" }
+      },
+      "required": ["barnName", "tons", "variety", "location"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "users",
+      "description": "User profiles registered on horsez equine platform"
+    },
+    "/users/{userId}/favorites/{favoriteId}": {
+      "schema": "favorites",
+      "description": "User saved favorite clinics, trainers, and marketplace listings"
+    },
+    "/userHorses/{horseId}": {
+      "schema": "userHorses",
+      "description": "Equine records owned by registered members"
+    },
+    "/farriers/{farrierId}": {
+      "schema": "farriers",
+      "description": "Community and certified farrier listings"
+    },
+    "/marketplaceListings/{listingId}": {
+      "schema": "marketplaceListings",
+      "description": "Community and verified marketplace listings"
+    },
+    "/marketplaceInquiries/{inquiryId}": {
+      "schema": "marketplaceInquiries",
+      "description": "Buyer inquiries, messages, and offers on marketplace listings"
+    },
+    "/marketplaceEscrow/{escrowId}": {
+      "schema": "marketplaceEscrow",
+      "description": "Secured escrow deposits and inspection contracts"
+    },
+    "/trainers/{trainerId}": {
+      "schema": "trainers",
+      "description": "Certified trainers and instructors"
+    },
+    "/veterinarians/{vetId}": {
+      "schema": "veterinarians",
+      "description": "Equine veterinary clinics and ambulatory hospitals"
+    },
+    "/transportationListings/{transporterId}": {
+      "schema": "transportationListings",
+      "description": "Commercial equine haulers and rigs"
+    },
+    "/haulJobs/{jobId}": {
+      "schema": "haulJobs",
+      "description": "Published haul jobs and transport dispatch requests"
+    },
+    "/feedSupplies/{productId}": {
+      "schema": "feedSupplies",
+      "description": "Hay, grain, and equestrian farm supplies"
+    },
+    "/feedOrders/{orderId}": {
+      "schema": "feedOrders",
+      "description": "Customer feed orders, scheduled barn deliveries, and payment records"
+    },
+    "/feedBulkQuotes/{quoteId}": {
+      "schema": "feedBulkQuotes",
+      "description": "Bulk tractor-trailer hay requests and commercial transport quotes"
+    },
+    "/lodgingListings/{propertyId}": {
+      "schema": "lodgingListings",
+      "description": "Bed & Bale horse motels, layover stalls, and RV hookups"
+    }
+  }
+}

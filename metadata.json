@@ -1,0 +1,6 @@
+{
+  "name": "horsez",
+  "description": "Version 1.0.0 — All-in-one equine services platform featuring Emergency Vet Dispatch, Routine Vets, Farriers, Horse Transportation, Trainers, Feed & Supplies Shop, Bed & Bale Lodging, and Buy & Sell Marketplace.",
+  "requestFramePermissions": ["geolocation", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
